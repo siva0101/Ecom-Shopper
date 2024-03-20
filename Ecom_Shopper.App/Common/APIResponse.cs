@@ -25,7 +25,8 @@ namespace Ecom_Shopper.App.Common
 
         public void AddWarnings(string warningMessage)
         {
-            
+           APIWarning warning = new APIWarning(description : warningMessage);
+            Warnings.Add(warning);
         }
 
     }

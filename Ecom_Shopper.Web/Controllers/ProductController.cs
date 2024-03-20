@@ -39,7 +39,7 @@ namespace Ecom_Shopper.Web.Controllers
                 foreach (var file in createProductDto.files)
                 {
 
-                    var filePath = Path.Combine(_environment.ContentRootPath + "/Image", file.FileName);
+                    var filePath = Path.Combine(_environment.ContentRootPath + "/ProductImage", file.FileName);
 
 
                     using (var stream = new FileStream(filePath, FileMode.Create))
@@ -58,6 +58,11 @@ namespace Ecom_Shopper.Web.Controllers
                             _response.Result = result;
                 }
                 return _response;
+            }
+            catch (DbUpdateException ex)
+            {
+                // Log or inspect ex.InnerException for details
+                Console.WriteLine(ex.InnerException);
             }
 
             catch (Exception)

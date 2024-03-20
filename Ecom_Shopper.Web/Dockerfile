@@ -9,11 +9,12 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
+COPY . .
 COPY ["Ecom_Shopper.Web/Ecom_Shopper.Web.csproj", "Ecom_Shopper.Web/"]
 COPY ["Ecom_Shopper.App/Ecom_Shopper.App.csproj", "Ecom_Shopper.App/"]
 COPY ["Ecom_Shopper.Domain/Ecom_Shopper.Domain.csproj", "Ecom_Shopper.Domain/"]
 COPY ["Ecom_Shopper.Infra/Ecom_Shopper.Infra.csproj", "Ecom_Shopper.Infra/"]
-RUN dotnet restore "./Ecom_Shopper.Web/./Ecom_Shopper.Web.csproj"
+RUN dotnet restore 
 COPY . .
 WORKDIR "/src/Ecom_Shopper.Web"
 RUN dotnet build "./Ecom_Shopper.Web.csproj" -c $BUILD_CONFIGURATION -o /app/build

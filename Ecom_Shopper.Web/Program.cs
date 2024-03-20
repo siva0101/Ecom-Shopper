@@ -15,12 +15,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
-{
+//builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+//{
 
-}).AddEntityFrameworkStores<ApplicationDbContext>();
+//}).AddEntityFrameworkStores<ApplicationDbContext>();
 
 builder.Services.AddApplicationService();
 builder.Services.AddInfraService();
@@ -34,7 +34,7 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 builder.Services.AddCors(option => option.AddPolicy("AllowOrigin", build =>
-{ build.WithOrigins("http://localhost:3000").AllowAnyHeader().AllowAnyMethod(); }));
+{ build.WithOrigins("*").AllowAnyHeader().AllowAnyMethod(); }));
 
 var app = builder.Build();
 

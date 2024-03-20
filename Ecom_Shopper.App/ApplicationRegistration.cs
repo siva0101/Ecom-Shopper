@@ -18,7 +18,7 @@ namespace Ecom_Shopper.App
             services.AddAutoMapper(typeof(MappingProfile));
             services.AddScoped(typeof(IPaginationService<,>), typeof(PaginationService<,>));
             services.AddScoped<IProductService, ProductService>();
-            services.AddScoped<IAuthService, AuthService>();
+            //services.AddScoped<IAuthService, AuthService>();
             return services;
         }
     }
