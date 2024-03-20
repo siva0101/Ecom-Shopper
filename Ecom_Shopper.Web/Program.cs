@@ -34,7 +34,7 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 builder.Services.AddCors(option => option.AddPolicy("AllowOrigin", build =>
-{ build.WithOrigins("*").AllowAnyHeader().AllowAnyMethod(); }));
+{ build.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod(); }));
 
 var app = builder.Build();
 
